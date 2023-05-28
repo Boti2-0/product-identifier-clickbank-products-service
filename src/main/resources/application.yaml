@@ -1,0 +1,21 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: clickbank-products-service
+clickBank:
+  host: https://new-api.clickbank.net
+  path: graphql
+  service:
+    name: clickbank
+productService:
+  path: api/v1
+  service:
+    name: PRODUCT-IDENTIFIER-SERVICE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
