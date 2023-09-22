@@ -7,7 +7,4 @@ PROJETO=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='artifactI
 sudo systemctl stop ${PROJETO}
 
 # Removendo diretorio antigo
-sudo rm -rf /home/ubuntu/api-gateway
-
-# KILL forçe
-sudo kill -9 $(pgrep java)
+sudo rm -rf /home/ubuntu/product-identifier-clickbank-products-service
