@@ -1,0 +1,28 @@
+logging:
+  file:
+    name: ./logs/log-file.log
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+server:
+  port: 8086
+spring:
+  application:
+    name: clickbank-products-service
+management:
+  endpoint:
+    loggers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://eureka.botisistemas.com.br/eureka}
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
