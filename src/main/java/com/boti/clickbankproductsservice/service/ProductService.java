@@ -66,7 +66,7 @@ public class ProductService {
         }
     }
 
-    private String setHankingByGravity(double gravity){
+    private String setRankingByGravity(double gravity){
             if (gravity < 25)
                 return "0 - 25";
             else if (gravity < 50)
