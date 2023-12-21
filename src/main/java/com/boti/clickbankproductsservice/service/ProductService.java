@@ -42,7 +42,7 @@ public class ProductService {
                         .subCategory(t.getMarketplaceStats().getSubCategory())
                         .initialDollarsPerSale(t.getMarketplaceStats().getInitialDollarsPerSale())
                         .averageDollarsPerSale(t.getMarketplaceStats().getAverageDollarsPerSale())
-                        .hanking(setHankingByGravity(t.getMarketplaceStats().getGravity()))
+                        .ranking(setRankingByGravity(t.getMarketplaceStats().getGravity()))
                         .totalRebill(t.getMarketplaceStats().getTotalRebill())
                         .standard(t.getMarketplaceStats().isStandard())
                         .physical(t.getMarketplaceStats().isPhysical())
@@ -66,7 +66,7 @@ public class ProductService {
         }
     }
 
-    private String setHankingByGravity(double gravity){
+    private String setRankingByGravity(double gravity){
             if (gravity < 25)
                 return "0 - 25";
             else if (gravity < 50)

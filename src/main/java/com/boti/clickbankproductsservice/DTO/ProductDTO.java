@@ -21,7 +21,7 @@ public class ProductDTO {
     private String subCategory;
     private Double initialDollarsPerSale;
     private Double averageDollarsPerSale;
-    private String hanking;
+    private String ranking;
     private Double totalRebill;
     private boolean standard;
     private boolean physical;
