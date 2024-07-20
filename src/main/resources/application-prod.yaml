@@ -5,7 +5,7 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     reactor.netty.http.client: DEBUG
 server:
-  port: 8086
+  port: 8083
 spring:
   application:
     name: clickbank-products-service
