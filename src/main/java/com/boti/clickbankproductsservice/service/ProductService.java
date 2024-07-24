@@ -52,10 +52,6 @@ public class ProductService {
                         .googleAdsAvailable(false)
                         .marketplace("CLICKBANK")
                         .build();
-                if (Objects.nonNull(dto.getAffiliateUrl()) && !dto.getAffiliateUrl().isBlank()) {
-                    log.info("Validando se contem Google Ads do produto: " + dto.getSite());
-                    updateIfCanGoogleAds(dto);
-                }
                 try {
                     dto.setKey(dto.getMarketplace()+dto.getSite()+dto.getCategory()+dto.getSubCategory()+dto.getUrl());
                     productsServiceClient.saveProduct(dto);
@@ -67,8 +63,10 @@ public class ProductService {
     }
 
     private String setRankingByGravity(double gravity){
-            if (gravity < 25)
-                return "0 - 25";
+            if (gravity == 0)
+                return "0";
+            else if (gravity < 25)
+                return "1 - 25";
             else if (gravity < 50)
                 return "25 - 50";
             else if (gravity < 75)
@@ -79,17 +77,6 @@ public class ProductService {
                 return "100 - 150";
             else
                 return "150+";
-    }
-    private void updateIfCanGoogleAds(ProductDTO dto) {
-        try {
-            dto.setGoogleAdsAvailable(!readHtmlToFind(dto.getAffiliateUrl(), "GOOGLE AD"));
-        } catch (IOException e) {
-        }
-    }
-
-    public boolean readHtmlToFind(String url, String content) throws IOException {
-        String html = Jsoup.connect(url).get().html();
-        return html.toUpperCase().contains(content);
     }
 
     private ClickBankParamsRequest getTotalHitsParams() {
